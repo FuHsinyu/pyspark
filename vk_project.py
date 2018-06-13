@@ -70,9 +70,8 @@ def get_incoming_likes_stat():
     input_file = "userWallLikes.parquet"
     file_name = os.path.join(data_saving_dir, input_file)
     user_wall_likes = spark.read.parquet(file_name)
-
-    count_wall_likes = user_wall_likes.distinct().groupBy("itemId").count().show()
-    # count_wall_likes.describe("count").show()
+    count_wall_likes = user_wall_likes.distinct().groupBy("itemId").count()
+    count_wall_likes.describe("count").show()
 
 
 def count_geo_tag():
@@ -228,14 +227,14 @@ spark = SparkSession \
     .appName("VK_ANALYSIS") \
     .getOrCreate() \
 
-count_coments_by_user()
+# count_coments_by_user()
 # count_allposts_by_user()
 # count_likes_by_user()
 # count_for_userWallProfiles()
 # get_incoming_comms_stat()
-# get_incoming_likes_stat()
+get_incoming_likes_stat()
 # count_geo_tag()
-count_open_closed_groups()
+# count_open_closed_groups()
 # count_reposts_from_sub_nonsub()
 # like_from_folORfri_per_post()
 # like_from_folORfri_per_user()
