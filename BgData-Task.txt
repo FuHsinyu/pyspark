@@ -1,0 +1,36 @@
+Task. 
+Process data and build user profile vector with the following characteristics.
+
+Basic level:
+1) count of comments, posts (all), original posts, reposts and likes made by user
+2) count of friends, groups, followers
+3) count of videos, audios, photos, gifts
+4) count of "incoming" (made by other users) comments, max and mean "incoming" comments per post
+5) count of "incoming" likes, max and mean "incoming" likes per post
+6) count of geo tagged posts
+7) count of open / closed (e.g. private) groups a user participates in
+
+Medium level:
+1) count of reposts from subscribed and not-subscribed groups
+2) count of deleted users in friends and followers
+3) aggregate (e.g. count, max, mean) characteristics for comments and likes (separtely) made by (a) friends and (b) followers per post
+4) aggregate (e.g. count, max, mean) characteristics for comments and likes (separtely) made by (a) friends and (b) followers per user
+5) find emoji (separately, count of: all, negative, positive, others) in (a) user's posts (b) user's comments  
+
+Advanced level: 
+1) ??? (TBD: application of machine learning algorithms to user profile vectors being constructed)
+
+Requirements and notes:
+1) using of Query DSL of Spark SQL (you CAN NOT use plain sql)
+2) Either Scala or Python (e.g. PySpark) languages may be used 
+3) The deadline is the end of the semestr
+4) ALL basic and medium level subtasks must be completed to get you at the exam
+5) Advanced level is not mandatory but gives a bonus for exam passing
+
+Data is accessible in virtual machines by the following pathes.
+/mnt/share/Petrov/bgdata ~ 44 Gb
+
+/mnt/share/Petrov/bgdata_small ~ 16 Gb
+
+Any question related to the task may be acked via email: 
+alipoov.nb@gmail.com - Butakov Nikolay
