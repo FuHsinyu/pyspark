@@ -31,7 +31,7 @@ sample count of comm per user
     ![incmingcommstats](./figures/incomingcommentsstat.png)  
 5. count of "incoming" likes, max and mean "incoming" likes per post  
     * INCOMING LIKES  
-    ![incominglikesstats](./figures/incominglikesstat.png) 
+    ![incominglikesstats](./figures/incominglikestat.png) 
 6. count of geo tagged posts  
     * Count of geo tagged posts  
     ![geotaggedposts](./figures/geotagged.png)
@@ -46,10 +46,10 @@ sample count of comm per user
 
 2. TO BE ADDED
 3. Aggregate (e.g. count, max, mean) characteristics for comments and likes (separtely) made by (a) friends and (b) followers per post  
-    * LIKE PER POST FROM FOLLOWERS AND FRIENDS
+    * LIKE PER POST FROM FOLLOWERS AND FRIENDS  
     ![likeperpostFOLandFRI](./figures/likefromfolandfri.png)  
     * COMMENTS PER POST FROM FOLLOWERS AND FRIENDS  
-    ![commsperpostFOLandFRI](./figures/commfromfolandfri.png)
+    ![commsperpostFOLandFRI](./figures/commfromfolandfri.png)  
 4. Aggregate (e.g. count, max, mean) characteristics for comments and likes (separtely) made by (a) friends and (b) followers per user
     * LIKE PER USER FROM FOLLOWERS AND FRIENDS  
     ![likeperuserFOLandFRI](./figures/likeperuserstats.png)  
