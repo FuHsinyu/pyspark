@@ -5,10 +5,10 @@ Data size: 44GB
 Sample data size: 16GB  
 Platform: pyspark 2.2.0 in ubuntu 16.04 LTS
 ## How to run
-Uncomment the task functions below:  
+Uncomment the task functions below from [here](./vk-project):  
 ![runtasks](./figures/runtasks.png)  
 ## NOTE
-Since data is pretty large, only sample result(20 rows usually) is presented. And if you wanna check full result, kindly please go run the function.  
+Since data is pretty large, only sample result(20 rows usually) is presented. And if you wanna check full result, kindly please go run the [here](./vk-project).  
 ## Results for level basic
 1. count of comments, posts (all), original posts, reposts and likes made by user  
 sample count of comm per user  
