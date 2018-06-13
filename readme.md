@@ -1,6 +1,6 @@
 # Spark for VK Assignments
 ## Task description
-Clean and extract informations form data (see [task_description](./BgData-Task.txt))   
+Clean and extract informations form VK data (a social application) (see [task_description](./BgData-Task.txt))   
 Data size: 44GB  
 Sample data size: 16GB  
 Platform: pyspark 2.2.0 in ubuntu 16.04 LTS
