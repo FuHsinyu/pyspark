@@ -36,7 +36,7 @@ sample count of comm per user
     * Count of geo tagged posts  
     ![geotaggedposts](./figures/geotagged.png)
 7. count of open / closed (e.g. private) groups a user participates in  
-    * Count of opened closed
+    * Count of opened closed  
     ![coungopenandclosedgroup](./figures/countofopenclosedgroup.png)
 
 ## Results for level medium
@@ -51,7 +51,7 @@ sample count of comm per user
     * COMMENTS PER POST FROM FOLLOWERS AND FRIENDS  
     ![commsperpostFOLandFRI](./figures/commfromfolandfri.png)
 4. Aggregate (e.g. count, max, mean) characteristics for comments and likes (separtely) made by (a) friends and (b) followers per user
-    * LIKE PER USER FROM FOLLOWERS AND FRIENDS
+    * LIKE PER USER FROM FOLLOWERS AND FRIENDS  
     ![likeperuserFOLandFRI](./figures/likeperuserstats.png)  
     * COMMENTS PER POST FROM FOLLOWERS AND FRIENDS  
     ![commsperpostFOLandFRI](./figures/commentsperuserstats.png)
