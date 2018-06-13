@@ -44,7 +44,10 @@ sample count of comm per user
     * COUNTS OF REPOSTS FROM SUB AND NONSUB GROUPS  
     ![countsofsubandnonsub](./figures/countfromsubnonsub_combined.png) 
 
-2. TO BE ADDED
+2. count of deleted users in friends and followers
+    * COUNT OF DELETED USER   
+    ![countdeluser](./figures/delfrifolcount.png)
+
 3. Aggregate (e.g. count, max, mean) characteristics for comments and likes (separtely) made by (a) friends and (b) followers per post  
     * LIKE PER POST FROM FOLLOWERS AND FRIENDS  
     ![likeperpostFOLandFRI](./figures/likefromfolandfri.png)  
@@ -55,4 +58,6 @@ sample count of comm per user
     ![likeperuserFOLandFRI](./figures/likeperuserstats.png)  
     * COMMENTS PER POST FROM FOLLOWERS AND FRIENDS  
     ![commsperpostFOLandFRI](./figures/commentsperuserstats.png)
-5. TO BE ADDED
+5. find emoji (separately, count of: all, negative, positive, others) in (a) user's posts (b) user's comments  
+    * EMOJI CLASSIFICATIONS COUNT
+    ![emojicountcombined](./figures/emojicountcombined.png)

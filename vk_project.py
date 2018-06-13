@@ -7,6 +7,7 @@ from pyspark.sql import functions as F
 from pyspark.sql.functions import desc
 import ast
 from pyspark.sql.types import LongType
+import emoji
 
 
 def count_coments_by_user():
@@ -119,6 +120,23 @@ def count_reposts_from_sub_nonsub():
     print("count from non-subbed group:", ready_reposts.count()-count_from_sub)
 
 
+def count_del_user_in_fris_fols():
+    input_file = "friendsProfiles.parquet"
+    file_name = os.path.join(data_saving_dir, input_file)
+    friends_pros = spark.read.parquet(file_name)
+    input_file = "followerProfiles.parquet"
+    file_name = os.path.join(data_saving_dir, input_file)
+    followers_pros = spark.read.parquet(file_name)
+
+    del_fri_count = friends_pros.distinct().filter(
+        friends_pros.deactivated == "deleted").count()
+    print("delted friends count:", del_fri_count)
+
+    del_fol_count = followers_pros.distinct().filter(followers_pros.deactivated ==
+                                                     "deleted").count()
+    print("deleted follower count:", del_fol_count)
+
+
 def like_from_folORfri_per_post():
     combine_pro_fol = F.udf(lambda x, y: str(x)+"_"+str(y))
     input_file = "userWallLikes.parquet"
@@ -218,7 +236,71 @@ def comm_from_folORfri_per_user():
     print("comments per user stats:")
     comm_final_res.describe("comm_fol_count", "comm_fri_count").show()
 
-    # Initialization
+
+def extract_emojis(str):
+    return ''.join(c for c in str if c in emoji.UNICODE_EMOJI)
+
+
+def count_neg_emo(str):
+    count = 0
+    negative_emojis = '😒😞😟😠😡😣☹️🙁😕😔😖😫😩😤😮😦😯😰😨😱😧😭😢😵😥😲😪😓😷🤕🤒🙄💔😳'
+    for emo in str:
+        if emo in negative_emojis:
+            count += 1
+    return count
+
+
+def count_pos_emo(str):
+    count = 0
+    positive_emojis = "😀😄😊😌😚🤓😅🙂😍😜😎😆🙃😘😝🤗😂😇☺️😗😛😏😃😉😋😙😁🤑💖💙♥🙈👧👩😈"
+    for emo in str:
+        if emo in positive_emojis:
+            count += 1
+    return count
+
+
+def count_netural_emo(str):
+    count = 0
+    netural_emojis = "🤐😴😑😐😶🤔😬👧👩"
+    for emo in str:
+        if emo in netural_emojis:
+            count += 1
+    return count
+
+
+def count_neg_pos_net_emojis_from_postcomm():
+    extract_emojis_udf = F.udf(lambda x: extract_emojis(x))
+    count_neg_emo_udf = F.udf(lambda x: count_neg_emo(x), LongType())
+    count_pos_emo_udf = F.udf(lambda x: count_pos_emo(x), LongType())
+    count_netural_emo_udf = F.udf(lambda x: count_netural_emo(x), LongType())
+    # EMOJI COUNT FROM POST
+    input_file = "userWallPosts.parquet"
+    file_name = os.path.join(data_saving_dir, input_file)
+    user_wall_posts = spark.read.parquet(file_name)
+
+    ready_emoji_text = user_wall_posts.select("text").filter(user_wall_posts.text != '').na.drop(
+    ).select(extract_emojis_udf(user_wall_posts.text).alias('extracted_emoji'))
+    emoji_count_table = ready_emoji_text.filter(ready_emoji_text.extracted_emoji != '').select(
+        "extracted_emoji", count_neg_emo_udf(ready_emoji_text.extracted_emoji).alias("negative_count"), count_pos_emo_udf(ready_emoji_text.extracted_emoji).alias("positive_count"), count_netural_emo_udf(ready_emoji_text.extracted_emoji).alias("netural_count"))
+    print("Emojis count from post")
+    emoji_count_table.groupBy().sum(
+        'negative_count', 'positive_count', 'netural_count').show()
+
+    # EMOJI COUNT FROM COMMENTS
+    input_file = "userWallComments.parquet"
+    file_name = os.path.join(data_saving_dir, input_file)
+    user_wall_comms = spark.read.parquet(file_name)
+
+    ready_emoji_text = user_wall_comms.select("text").filter(user_wall_comms.text != '').na.drop(
+    ).select(extract_emojis_udf(user_wall_comms.text).alias('extracted_emoji'))
+    emoji_count_table = ready_emoji_text.filter(ready_emoji_text.extracted_emoji != '').select(
+        "extracted_emoji", count_neg_emo_udf(ready_emoji_text.extracted_emoji).alias("negative_count"), count_pos_emo_udf(ready_emoji_text.extracted_emoji).alias("positive_count"), count_netural_emo_udf(ready_emoji_text.extracted_emoji).alias("netural_count"))
+    print("Emojis count from comments")
+    emoji_count_table.groupBy().sum(
+        'negative_count', 'positive_count', 'netural_count').show()
+
+
+# Initialization
 global data_saving_dir
 data_saving_dir = "/media/hsin/16FC55FBFC55D619/linux-ubuntu-shared-data/small_data/"
 spark = SparkSession \
@@ -227,16 +309,21 @@ spark = SparkSession \
     .appName("VK_ANALYSIS") \
     .getOrCreate() \
 
+# BASIC LEVEL TASKS
 # count_coments_by_user()
 # count_allposts_by_user()
 # count_likes_by_user()
 # count_for_userWallProfiles()
 # get_incoming_comms_stat()
-get_incoming_likes_stat()
+# get_incoming_likes_stat()
 # count_geo_tag()
 # count_open_closed_groups()
+
+# MEDIUM LEVEL TAKS
 # count_reposts_from_sub_nonsub()
+# count_del_user_in_fris_fols()
 # like_from_folORfri_per_post()
 # like_from_folORfri_per_user()
 # comm_from_folORfri_per_post()
 # comm_from_folORfri_per_user()
+# count_neg_pos_net_emojis_from_postcomm()
