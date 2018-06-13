@@ -46,7 +46,7 @@ sample count of comm per user
 
 2. TO BE ADDED
 3. Aggregate (e.g. count, max, mean) characteristics for comments and likes (separtely) made by (a) friends and (b) followers per post  
-    * LIKE PER POST FROM FOLLOWERS AND FRIENDS
+    * LIKE PER POST FROM FOLLOWERS AND FRIENDS  
     ![likeperpostFOLandFRI](./figures/likefromfolandfri.png)  
     * COMMENTS PER POST FROM FOLLOWERS AND FRIENDS  
     ![commsperpostFOLandFRI](./figures/commfromfolandfri.png)  
