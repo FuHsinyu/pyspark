@@ -8,7 +8,7 @@ Platform: pyspark 2.2.0 in ubuntu 16.04 LTS
 Uncomment the task functions below from [here](./vk-project):  
 ![runtasks](./figures/runtasks.png)  
 ## NOTE
-Since data is pretty large, only sample result(20 rows usually) is presented. And if you wanna check full result, kindly please go run the [here](./vk-project).  
+Since data is pretty large, only sample result(20 rows usually) is presented. And if you wanna check full result, kindly please go run the [here](./vk_project.py).  
 ## Results for level basic
 1. count of comments, posts (all), original posts, reposts and likes made by user  
 sample count of comm per user  
@@ -59,5 +59,5 @@ sample count of comm per user
     * COMMENTS PER POST FROM FOLLOWERS AND FRIENDS  
     ![commsperpostFOLandFRI](./figures/commentsperuserstats.png)
 5. find emoji (separately, count of: all, negative, positive, others) in (a) user's posts (b) user's comments  
-    * EMOJI CLASSIFICATIONS COUNT
+    * EMOJI CLASSIFICATIONS COUNT  
     ![emojicountcombined](./figures/emojicountcombined.png)
