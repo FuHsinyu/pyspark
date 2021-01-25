@@ -6,7 +6,7 @@ Sample data size: 16GB
 Platform: pyspark 2.2.0 in ubuntu 16.04 LTS
 ## How to run
 Uncomment the task functions below from [vk_project](./vk_project.py):  
-![runtasks](./figures/runtasks.png)  
+![runtasks](./figures/runtasks.jpg)  
 ## NOTE
 Since data is pretty large, only sample result(20 rows usually) is presented. And if you wanna check full result, kindly please go run the [vk_project](./vk_project.py).
 ## Results for level basic
